@@ -4,6 +4,7 @@ import styled from 'styled-components'
 
 const Label = styled.label`
   font-weight: bold;
+  font-family: 'Joti One', cursive;
   display: grid;
   grid-auto-flow: column;
   grid-auto-columns: min-content;

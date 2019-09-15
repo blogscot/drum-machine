@@ -1,20 +1,23 @@
 :root {
   --primary-color: rgb(136, 52, 52);
   --secondary-color: rgb(99, 36, 36);
+  --shadow: 1px 5px 10px grey;
 }
 
 .App {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 90vh;
+  font-family: 'Joti One', cursive;
 }
 
 label {
   display: flex;
   justify-content: center;
   margin-bottom: 30px;
-  font-size: 18px;
+  font-size: 24px;
+  font-family: 'Joti One', cursive;
 }
 
 .drum-display {
@@ -44,7 +47,7 @@ label {
   border: 2px solid var(--secondary-color);
   border-radius: 0 0 10px 10px;
   padding: 16px;
-  box-shadow: 1px 3px 18px grey;
+  box-shadow: var(--shadow);
   background-color: var(--primary-color);
 }
 
@@ -122,17 +125,18 @@ input[type='range']::-moz-range-thumb {
   margin-top: 30px;
   border: 1px solid grey;
   border-radius: 20px;
+  box-shadow: var(--shadow);
 }
 
 .volume-control {
   font-size: 36px;
-  transform: translate(0, 2px);
+  transform: translate(0, -1px);
   padding: 0 10px;
   color: white;
   cursor: default;
 }
 
 #volume-widget {
-  width: 160px;
+  width: 156px;
   background-color: var(--primary-color);
 }
