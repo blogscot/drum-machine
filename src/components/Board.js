@@ -56,6 +56,13 @@ class Board extends Component {
     this.handleButtonPress = this.handleButtonPress.bind(this)
     this.handleVolume = this.handleVolume.bind(this)
     this.handlePowerSwitch = this.handlePowerSwitch.bind(this)
+    this.preloadDrumSounds()
+  }
+  preloadDrumSounds() {
+    drumSounds.forEach(sound => {
+      let audio = new Audio(drumURL + sound.sample)
+      audio.load(sound.sample)
+    })
   }
   handleButtonPress = event => {
     if (!this.state.powerOn) return
@@ -112,20 +119,17 @@ class Board extends Component {
     })
   }
   handlePowerSwitch(event) {
-    console.log('onToggle', event.target.value)
     this.setState({
       powerOn: !this.state.powerOn,
       name: '',
     })
   }
   render() {
+    const { powerOn, name, volume } = this.state
     return (
       <div>
-        <PowerSwitch
-          powerOn={this.state.powerOn}
-          handler={this.handlePowerSwitch}
-        />
-        <Display text={this.state.name} />
+        <PowerSwitch powerOn={powerOn} handler={this.handlePowerSwitch} />
+        <Display text={name} />
         <div className="drum-board">
           <DrumPad label="Q" handler={this.handleButtonPress} />
           <DrumPad label="W" handler={this.handleButtonPress} />
@@ -137,7 +141,7 @@ class Board extends Component {
           <DrumPad label="X" handler={this.handleButtonPress} />
           <DrumPad label="C" handler={this.handleButtonPress} />
         </div>
-        <Volume volume={this.state.volume} handler={this.handleVolume} />
+        <Volume volume={volume} handler={this.handleVolume} />
       </div>
     )
   }
