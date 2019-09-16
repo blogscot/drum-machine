@@ -4,44 +4,52 @@ import Display from './Display.js'
 import Volume from './Volume.js'
 import PowerSwitch from './PowerSwitch.js'
 
-const drumURL = 'https://s3.amazonaws.com/freecodecamp/drums/'
+import heater1 from '../audio/Heater-1.mp3'
+import heater2 from '../audio/Heater-2.mp3'
+import chord1 from '../audio/Chord_1.mp3'
+import heater3 from '../audio/Heater-3.mp3'
+import heater4 from '../audio/Heater-4_1.mp3'
+import clap from '../audio/Heater-6.mp3'
+import openHH from '../audio/Dsc_Oh.mp3'
+import kickNHat from '../audio/Kick_n_Hat.mp3'
+import closedHH from '../audio/RP4_KICK_1.mp3'
 
 const drumSounds = [
   {
     name: 'Heater 1',
-    sample: 'Heater-1.mp3',
+    sample: heater1,
   },
   {
     name: 'Heater 2',
-    sample: 'Heater-2.mp3',
+    sample: heater2,
   },
   {
     name: 'Chord 1',
-    sample: 'Chord_1.mp3',
+    sample: chord1,
   },
   {
     name: 'Heater 3',
-    sample: 'Heater-3.mp3',
+    sample: heater3,
   },
   {
     name: 'Heater 4',
-    sample: 'Heater-4_1.mp3',
+    sample: heater4,
   },
   {
     name: 'Clap',
-    sample: 'Heater-6.mp3',
+    sample: clap,
   },
   {
     name: 'Open HH',
-    sample: 'Dsc_Oh.mp3',
+    sample: openHH,
   },
   {
     name: "Kick n' Hat",
-    sample: 'Kick_n_Hat.mp3',
+    sample: kickNHat,
   },
   {
     name: 'Closed HH',
-    sample: 'RP4_KICK_1.mp3',
+    sample: closedHH,
   },
 ]
 
@@ -56,13 +64,6 @@ class Board extends Component {
     this.handleButtonPress = this.handleButtonPress.bind(this)
     this.handleVolume = this.handleVolume.bind(this)
     this.handlePowerSwitch = this.handlePowerSwitch.bind(this)
-    this.preloadDrumSounds()
-  }
-  preloadDrumSounds() {
-    drumSounds.forEach(sound => {
-      let audio = new Audio(drumURL + sound.sample)
-      audio.load(sound.sample)
-    })
   }
   handleButtonPress = event => {
     if (!this.state.powerOn) return
@@ -105,7 +106,7 @@ class Board extends Component {
       default:
     }
     if (sound) {
-      let audio = new Audio(drumURL + sound.sample)
+      let audio = new Audio(sound.sample)
       audio.volume = this.state.volume / 100
       audio.play()
       this.setState({
