@@ -1,24 +1,15 @@
 {
   "files": {
     "main.css": "/drum-machine/static/css/main.a460ee0b.chunk.css",
-    "main.js": "/drum-machine/static/js/main.fa45eaf9.chunk.js",
-    "main.js.map": "/drum-machine/static/js/main.fa45eaf9.chunk.js.map",
+    "main.js": "/drum-machine/static/js/main.c91958f5.chunk.js",
+    "main.js.map": "/drum-machine/static/js/main.c91958f5.chunk.js.map",
     "runtime~main.js": "/drum-machine/static/js/runtime~main.4626f334.js",
     "runtime~main.js.map": "/drum-machine/static/js/runtime~main.4626f334.js.map",
-    "static/js/2.ede9b179.chunk.js": "/drum-machine/static/js/2.ede9b179.chunk.js",
-    "static/js/2.ede9b179.chunk.js.map": "/drum-machine/static/js/2.ede9b179.chunk.js.map",
+    "static/js/2.de76142c.chunk.js": "/drum-machine/static/js/2.de76142c.chunk.js",
+    "static/js/2.de76142c.chunk.js.map": "/drum-machine/static/js/2.de76142c.chunk.js.map",
     "index.html": "/drum-machine/index.html",
-    "precache-manifest.d21b72cdd3725c432ef56d7f4a89f4da.js": "/drum-machine/precache-manifest.d21b72cdd3725c432ef56d7f4a89f4da.js",
+    "precache-manifest.44d9137f4c45820be361db85fc11a918.js": "/drum-machine/precache-manifest.44d9137f4c45820be361db85fc11a918.js",
     "service-worker.js": "/drum-machine/service-worker.js",
-    "static/css/main.a460ee0b.chunk.css.map": "/drum-machine/static/css/main.a460ee0b.chunk.css.map",
-    "static/media/Chord_1.mp3": "/drum-machine/static/media/Chord_1.d8544f3e.mp3",
-    "static/media/Dsc_Oh.mp3": "/drum-machine/static/media/Dsc_Oh.5c9f8087.mp3",
-    "static/media/Heater-1.mp3": "/drum-machine/static/media/Heater-1.b1cfea05.mp3",
-    "static/media/Heater-2.mp3": "/drum-machine/static/media/Heater-2.0d219666.mp3",
-    "static/media/Heater-3.mp3": "/drum-machine/static/media/Heater-3.632e8772.mp3",
-    "static/media/Heater-4_1.mp3": "/drum-machine/static/media/Heater-4_1.d9de8a50.mp3",
-    "static/media/Heater-6.mp3": "/drum-machine/static/media/Heater-6.3062daca.mp3",
-    "static/media/Kick_n_Hat.mp3": "/drum-machine/static/media/Kick_n_Hat.200b4bd3.mp3",
-    "static/media/RP4_KICK_1.mp3": "/drum-machine/static/media/RP4_KICK_1.09fda256.mp3"
+    "static/css/main.a460ee0b.chunk.css.map": "/drum-machine/static/css/main.a460ee0b.chunk.css.map"
   }
 }
