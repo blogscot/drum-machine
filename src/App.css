@@ -42,8 +42,8 @@ label {
   flex-wrap: wrap;
   justify-content: space-between;
   align-content: space-between;
-  width: 200px;
-  height: 200px;
+  width: 260px;
+  height: 260px;
   border: 2px solid var(--secondary-color);
   border-radius: 0 0 10px 10px;
   padding: 16px;
@@ -55,8 +55,8 @@ label {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 60px;
-  height: 60px;
+  width: 80px;
+  height: 80px;
   font-size: 22px;
   border: 1px solid grey;
   border-radius: 4px;
@@ -137,6 +137,6 @@ input[type='range']::-moz-range-thumb {
 }
 
 #volume-widget {
-  width: 156px;
+  width: 214px;
   background-color: var(--primary-color);
 }
