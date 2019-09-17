@@ -4,70 +4,12 @@
   --shadow: 1px 5px 10px grey;
 }
 
-.App {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 90vh;
-  font-family: 'Joti One', cursive;
-}
-
 label {
   display: flex;
   justify-content: center;
   margin-bottom: 30px;
   font-size: 24px;
   font-family: 'Joti One', cursive;
-}
-
-.drum-display {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 26px;
-  height: 60px;
-  margin-bottom: 0;
-  padding: 8px;
-  border: 2px solid rgb(99, 36, 36);
-  border-bottom: none;
-  border-radius: 10px 10px 0 0;
-  box-shadow: 1px 3px 18px grey;
-  background-color: rgb(231, 241, 243);
-  color: black;
-  box-sizing: border-box;
-}
-
-.drum-board {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-content: space-between;
-  width: 260px;
-  height: 260px;
-  border: 2px solid var(--secondary-color);
-  border-radius: 0 0 10px 10px;
-  padding: 16px;
-  box-shadow: var(--shadow);
-  background-color: var(--primary-color);
-}
-
-.drum-button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 80px;
-  height: 80px;
-  font-size: 22px;
-  border: 1px solid grey;
-  border-radius: 4px;
-  box-shadow: 1px 3px 6px grey;
-  background-color: rgb(233, 241, 204);
-  cursor: pointer;
-}
-
-.drum-button:active {
-  background-color: lightblue;
-  color: white;
 }
 
 /* Volume */
@@ -117,26 +59,4 @@ input[type='range']::-moz-range-thumb {
   border-radius: 5px;
   background: #ffffff;
   cursor: pointer;
-}
-
-.volume {
-  display: flex;
-  background-color: var(--primary-color);
-  margin-top: 30px;
-  border: 1px solid grey;
-  border-radius: 20px;
-  box-shadow: var(--shadow);
-}
-
-.volume-control {
-  font-size: 36px;
-  transform: translate(0, -1px);
-  padding: 0 10px;
-  color: white;
-  cursor: default;
-}
-
-#volume-widget {
-  width: 214px;
-  background-color: var(--primary-color);
 }

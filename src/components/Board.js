@@ -3,7 +3,21 @@ import DrumPad from './DrumPad.js'
 import Display from './Display.js'
 import Volume from './Volume.js'
 import PowerSwitch from './PowerSwitch.js'
+import styled from 'styled-components'
 
+const Pads = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-content: space-between;
+  width: 260px;
+  height: 260px;
+  border: 2px solid var(--secondary-color);
+  border-radius: 0 0 10px 10px;
+  padding: 16px;
+  box-shadow: var(--shadow);
+  background-color: var(--primary-color);
+`
 const drumURL = 'https://s3.amazonaws.com/freecodecamp/drums/'
 
 const drumSounds = [
@@ -130,7 +144,7 @@ class Board extends Component {
       <div>
         <PowerSwitch powerOn={powerOn} handler={this.handlePowerSwitch} />
         <Display text={name} />
-        <div className="drum-board">
+        <Pads>
           <DrumPad label="Q" handler={this.handleButtonPress} />
           <DrumPad label="W" handler={this.handleButtonPress} />
           <DrumPad label="E" handler={this.handleButtonPress} />
@@ -140,7 +154,7 @@ class Board extends Component {
           <DrumPad label="Z" handler={this.handleButtonPress} />
           <DrumPad label="X" handler={this.handleButtonPress} />
           <DrumPad label="C" handler={this.handleButtonPress} />
-        </div>
+        </Pads>
         <Volume volume={volume} handler={this.handleVolume} />
       </div>
     )
