@@ -144,7 +144,6 @@ class Board extends Component {
       })
     }, 1000)
   }
-  powerOff() {}
   render() {
     const { powerOn, name, volume } = this.state
     return (
