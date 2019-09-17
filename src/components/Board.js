@@ -72,6 +72,12 @@ class Board extends Component {
     this.handlePowerSwitch = this.handlePowerSwitch.bind(this)
     this.preloadDrumSounds()
   }
+  componentDidMount() {
+    document.addEventListener('keydown', this.handleButtonPress)
+  }
+  componentWillUnmount() {
+    document.removeEventListener('keydown', this.handleButtonPress)
+  }
   preloadDrumSounds() {
     drumSounds.forEach(sound => {
       let audio = new Audio(drumURL + sound.sample)

@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { string, func } from 'prop-types'
 import styled from 'styled-components'
 
@@ -21,22 +21,13 @@ const Pad = styled.div`
   }
 `
 
-class DrumPad extends Component {
-  static propTypes = {
-    label: string.isRequired,
-    handler: func.isRequired,
-  }
-  componentDidMount() {
-    document.addEventListener('keydown', this.props.handler)
-  }
+const DrumPad = ({ label, handler }) => {
+  return <Pad onClick={handler}>{label}</Pad>
+}
 
-  componentWillUnmount() {
-    document.removeEventListener('keydown', this.props.handler)
-  }
-  render() {
-    const { label, handler } = this.props
-    return <Pad onClick={handler}>{label}</Pad>
-  }
+DrumPad.propTypes = {
+  label: string.isRequired,
+  handler: func.isRequired,
 }
 
 export default DrumPad
