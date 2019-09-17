@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { string, func } from 'prop-types'
 import styled from 'styled-components'
 
 const Pad = styled.div`
@@ -21,6 +22,10 @@ const Pad = styled.div`
 `
 
 class DrumPad extends Component {
+  static propTypes = {
+    label: string.isRequired,
+    handler: func.isRequired,
+  }
   componentDidMount() {
     document.addEventListener('keydown', this.props.handler)
   }

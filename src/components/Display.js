@@ -1,4 +1,5 @@
 import React from 'react'
+import { string } from 'prop-types'
 import styled from 'styled-components'
 
 const Panel = styled.div`
@@ -20,6 +21,10 @@ const Panel = styled.div`
 
 const Display = ({ text }) => {
   return <Panel>{text}</Panel>
+}
+
+Display.propTypes = {
+  text: string,
 }
 
 Display.defaultProps = {

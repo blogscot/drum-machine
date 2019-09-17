@@ -1,5 +1,6 @@
 import React from 'react'
 import { Toggle } from 'react-toggle-component'
+import { bool, func } from 'prop-types'
 import styled from 'styled-components'
 
 const Label = styled.label`
@@ -20,6 +21,11 @@ const PowerSwitch = ({ powerOn, handler }) => {
       <Toggle name="toggle-1" onToggle={handler} value={powerOn} />
     </Label>
   )
+}
+
+PowerSwitch.propTypes = {
+  powerOn: bool.isRequired,
+  handler: func.isRequired,
 }
 
 export default PowerSwitch

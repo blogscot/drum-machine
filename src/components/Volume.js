@@ -1,4 +1,5 @@
 import React from 'react'
+import { number, func } from 'prop-types'
 import styled from 'styled-components'
 
 const Control = styled.div`
@@ -37,6 +38,11 @@ const Volume = ({ volume, handler }) => {
       <Label>+</Label>
     </Control>
   )
+}
+
+Volume.propTypes = {
+  volume: number.isRequired,
+  handler: func.isRequired,
 }
 
 export default Volume
