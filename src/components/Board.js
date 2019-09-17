@@ -133,11 +133,18 @@ class Board extends Component {
     })
   }
   handlePowerSwitch(event) {
+    const { powerOn } = this.state
     this.setState({
-      powerOn: !this.state.powerOn,
-      name: '',
+      powerOn: !powerOn,
+      name: powerOn ? 'Bye!' : 'Welcome!',
     })
+    setTimeout(() => {
+      this.setState({
+        name: '',
+      })
+    }, 1000)
   }
+  powerOff() {}
   render() {
     const { powerOn, name, volume } = this.state
     return (
