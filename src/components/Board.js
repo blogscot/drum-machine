@@ -63,6 +63,7 @@ const Board = () => {
   let [powerOn, setPowerOn] = useState(false)
   let [displayText, setDisplayText] = useState('')
   let [volume, setVolume] = useState(50)
+  let [timerID, setTimerID] = useState(null)
 
   const preloadDrumSounds = () => {
     drumSounds.forEach(sound => {
@@ -123,9 +124,12 @@ const Board = () => {
   const handlePowerSwitch = () => {
     setPowerOn(!powerOn)
     setDisplayText(powerOn ? 'Bye!' : 'Welcome!')
-    setTimeout(() => {
+
+    clearTimeout(timerID)
+    let timer = setTimeout(() => {
       setDisplayText('')
-    }, 1000)
+    }, 1500)
+    setTimerID(timer)
   }
 
   preloadDrumSounds()
