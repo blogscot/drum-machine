@@ -61,7 +61,7 @@ const drumSounds = [
 
 const Board = () => {
   let [powerOn, setPowerOn] = useState(false)
-  let [name, setName] = useState('')
+  let [displayText, setDisplayText] = useState('')
   let [volume, setVolume] = useState(50)
 
   const preloadDrumSounds = () => {
@@ -114,7 +114,7 @@ const Board = () => {
       let audio = new Audio(drumURL + sound.sample)
       audio.volume = volume / 100
       audio.play()
-      setName(sound.name)
+      setDisplayText(sound.name)
     }
   }
   const handleVolume = event => {
@@ -122,9 +122,9 @@ const Board = () => {
   }
   const handlePowerSwitch = () => {
     setPowerOn(!powerOn)
-    setName(powerOn ? 'Bye!' : 'Welcome!')
+    setDisplayText(powerOn ? 'Bye!' : 'Welcome!')
     setTimeout(() => {
-      setName('')
+      setDisplayText('')
     }, 1000)
   }
 
@@ -140,7 +140,7 @@ const Board = () => {
   return (
     <div>
       <PowerSwitch powerOn={powerOn} handler={handlePowerSwitch} />
-      <Display text={name} />
+      <Display text={displayText} />
       <Pads>
         <DrumPad label="Q" handler={handleButtonPress} />
         <DrumPad label="W" handler={handleButtonPress} />
