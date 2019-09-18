@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { useState, useEffect } from 'react'
 import DrumPad from './DrumPad.js'
 import Display from './Display.js'
 import Volume from './Volume.js'
@@ -59,33 +59,19 @@ const drumSounds = [
   },
 ]
 
-class Board extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      powerOn: false,
-      name: '',
-      volume: 50,
-    }
-    this.handleButtonPress = this.handleButtonPress.bind(this)
-    this.handleVolume = this.handleVolume.bind(this)
-    this.handlePowerSwitch = this.handlePowerSwitch.bind(this)
-    this.preloadDrumSounds()
-  }
-  componentDidMount() {
-    document.addEventListener('keydown', this.handleButtonPress)
-  }
-  componentWillUnmount() {
-    document.removeEventListener('keydown', this.handleButtonPress)
-  }
-  preloadDrumSounds() {
+const Board = () => {
+  let [powerOn, setPowerOn] = useState(false)
+  let [name, setName] = useState('')
+  let [volume, setVolume] = useState(50)
+
+  const preloadDrumSounds = () => {
     drumSounds.forEach(sound => {
       let audio = new Audio(drumURL + sound.sample)
       audio.load(sound.sample)
     })
   }
-  handleButtonPress = event => {
-    if (!this.state.powerOn) return
+  const handleButtonPress = event => {
+    if (!powerOn) return
 
     let key = ''
     if (event.type === 'keydown') {
@@ -126,51 +112,49 @@ class Board extends Component {
     }
     if (sound) {
       let audio = new Audio(drumURL + sound.sample)
-      audio.volume = this.state.volume / 100
+      audio.volume = volume / 100
       audio.play()
-      this.setState({
-        name: sound.name,
-      })
+      setName(sound.name)
     }
   }
-  handleVolume(event) {
-    this.setState({
-      volume: event.target.value,
-    })
+  const handleVolume = event => {
+    setVolume(event.target.value)
   }
-  handlePowerSwitch(event) {
-    const { powerOn } = this.state
-    this.setState({
-      powerOn: !powerOn,
-      name: powerOn ? 'Bye!' : 'Welcome!',
-    })
+  const handlePowerSwitch = () => {
+    setPowerOn(!powerOn)
+    setName(powerOn ? 'Bye!' : 'Welcome!')
     setTimeout(() => {
-      this.setState({
-        name: '',
-      })
+      setName('')
     }, 1000)
   }
-  render() {
-    const { powerOn, name, volume } = this.state
-    return (
-      <div>
-        <PowerSwitch powerOn={powerOn} handler={this.handlePowerSwitch} />
-        <Display text={name} />
-        <Pads>
-          <DrumPad label="Q" handler={this.handleButtonPress} />
-          <DrumPad label="W" handler={this.handleButtonPress} />
-          <DrumPad label="E" handler={this.handleButtonPress} />
-          <DrumPad label="A" handler={this.handleButtonPress} />
-          <DrumPad label="S" handler={this.handleButtonPress} />
-          <DrumPad label="D" handler={this.handleButtonPress} />
-          <DrumPad label="Z" handler={this.handleButtonPress} />
-          <DrumPad label="X" handler={this.handleButtonPress} />
-          <DrumPad label="C" handler={this.handleButtonPress} />
-        </Pads>
-        <Volume volume={volume} handler={this.handleVolume} />
-      </div>
-    )
-  }
+
+  preloadDrumSounds()
+
+  useEffect(() => {
+    document.addEventListener('keydown', handleButtonPress)
+
+    return () => {
+      document.removeEventListener('keydown', handleButtonPress)
+    }
+  })
+  return (
+    <div>
+      <PowerSwitch powerOn={powerOn} handler={handlePowerSwitch} />
+      <Display text={name} />
+      <Pads>
+        <DrumPad label="Q" handler={handleButtonPress} />
+        <DrumPad label="W" handler={handleButtonPress} />
+        <DrumPad label="E" handler={handleButtonPress} />
+        <DrumPad label="A" handler={handleButtonPress} />
+        <DrumPad label="S" handler={handleButtonPress} />
+        <DrumPad label="D" handler={handleButtonPress} />
+        <DrumPad label="Z" handler={handleButtonPress} />
+        <DrumPad label="X" handler={handleButtonPress} />
+        <DrumPad label="C" handler={handleButtonPress} />
+      </Pads>
+      <Volume volume={volume} handler={handleVolume} />
+    </div>
+  )
 }
 
 export default Board
