@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import DrumPad from './DrumPad.js'
 import Display from './Display.js'
 import Volume from './Volume.js'
@@ -63,13 +63,23 @@ const Board = () => {
   let [powerOn, setPowerOn] = useState(false)
   let [displayText, setDisplayText] = useState('')
   let [volume, setVolume] = useState(50)
-  let [timerID, setTimerID] = useState(null)
+  let timerID = useRef(null)
 
   const preloadDrumSounds = () => {
     drumSounds.forEach(sound => {
       let audio = new Audio(drumURL + sound.sample)
       audio.load(sound.sample)
     })
+  }
+  const runDisplayTimer = () => {
+    clearTimeout(timerID.current)
+    timerID.current = setTimeout(() => {
+      setDisplayText('')
+    }, 1500)
+  }
+  const updateDisplay = text => {
+    setDisplayText(text)
+    runDisplayTimer()
   }
   const handleButtonPress = event => {
     if (!powerOn) return
@@ -115,7 +125,7 @@ const Board = () => {
       let audio = new Audio(drumURL + sound.sample)
       audio.volume = volume / 100
       audio.play()
-      setDisplayText(sound.name)
+      updateDisplay(sound.name)
     }
   }
   const handleVolume = event => {
@@ -123,17 +133,10 @@ const Board = () => {
   }
   const handlePowerSwitch = () => {
     setPowerOn(!powerOn)
-    setDisplayText(powerOn ? 'Bye!' : 'Welcome!')
-
-    clearTimeout(timerID)
-    let timer = setTimeout(() => {
-      setDisplayText('')
-    }, 1500)
-    setTimerID(timer)
+    updateDisplay(powerOn ? 'Bye!' : 'Drum Machine!')
   }
 
   preloadDrumSounds()
-
   useEffect(() => {
     document.addEventListener('keydown', handleButtonPress)
 
